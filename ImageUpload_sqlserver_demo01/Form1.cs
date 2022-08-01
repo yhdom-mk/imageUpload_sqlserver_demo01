@@ -35,7 +35,7 @@ namespace ImageUpload_sqlserver_demo01
             {
                 if(cn.State == ConnectionState.Closed)
                     cn.Open();
-                using(SqlCommand cmd = SqlCommand("insert into pictures(filename, image) values(@filename, @image)"))
+                using(SqlCommand cmd = new SqlCommand("insert into pictures(filename, image) values(@filename, @image)", cn))
                 {
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.AddWithValue("@filename", textFileName.Text);
